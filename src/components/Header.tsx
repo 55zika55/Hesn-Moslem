@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { HijriDateInfo } from '../utils/hijriCalendar';
-import { MapPin, MoonStar, SunMedium, Volume2, Square } from 'lucide-react';
+import { MapPin, MoonStar, SunMedium, Volume2, Square, Wifi, WifiOff, HardDrive } from 'lucide-react';
 import { SettingsState, ActiveTab } from '../types';
 import { playAdhanAudio, stopAdhanAudio, subscribeAdhanState } from '../utils/audioAlert';
 import { useTranslation } from '../i18n';
+import { useOnlineStatus } from '../utils/usePWAInstall';
+import { CacheManagerModal } from './CacheManagerModal';
 
 interface HeaderProps {
   hijriDate: HijriDateInfo;
@@ -22,6 +24,8 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const { t, isRTL } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isCacheModalOpen, setIsCacheModalOpen] = useState(false);
+  const isOnline = useOnlineStatus();
 
   useEffect(() => {
     return subscribeAdhanState(setIsPlaying);
@@ -58,7 +62,33 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Location & Quick Actions */}
-        <div className="flex items-center gap-2 md:gap-3">
+        <div className="flex items-center gap-2 md:gap-2.5">
+          {/* Online/Offline Status Indicator Button */}
+          <button
+            id="header-network-status-btn"
+            onClick={() => setIsCacheModalOpen(true)}
+            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-bold transition-all border shadow-sm ${
+              isOnline
+                ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-500/20 hover:bg-emerald-100 dark:hover:bg-emerald-900/40'
+                : 'bg-amber-500/15 text-amber-800 dark:text-amber-300 border-amber-500/30 hover:bg-amber-500/25 animate-pulse'
+            }`}
+            title={isOnline ? t('onlineDesc') : t('offlineModeActive')}
+          >
+            <span
+              className={`w-2 h-2 rounded-full ${
+                isOnline ? 'bg-emerald-500 shadow-sm shadow-emerald-500/50' : 'bg-amber-400'
+              }`}
+            />
+            {isOnline ? (
+              <Wifi className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+            ) : (
+              <WifiOff className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
+            )}
+            <span className="hidden sm:inline text-[11px]">
+              {isOnline ? t('onlineStatus') : t('offlineStatus')}
+            </span>
+          </button>
+
           {/* Location button */}
           <button
             id="header-location-btn"
@@ -110,6 +140,12 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Cache Manager Modal */}
+      <CacheManagerModal
+        isOpen={isCacheModalOpen}
+        onClose={() => setIsCacheModalOpen(false)}
+      />
     </header>
   );
 };

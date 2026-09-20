@@ -23,6 +23,7 @@ export interface QuranBookmark {
   surahNumber: number;
   surahName: string;
   ayahNumber: number;
+  page?: number;
   timestamp: number;
 }
 
@@ -123,4 +124,18 @@ export interface SettingsState {
     showDistance: boolean;
   };
   language: Language;
+}
+
+export interface OfflineCacheStats {
+  azkarCached: boolean;
+  azkarCount: number;
+  quranSurahsCached: number;
+  totalSurahs: number;
+  mushafPagesCached: number;
+  totalMushafPages: number;
+  audioCached: boolean;
+  totalEstimatedSizeMB: number;
+  isDownloading: boolean;
+  downloadProgress: number; // 0 - 100
+  lastSyncTime?: number;
 }

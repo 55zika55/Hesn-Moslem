@@ -21,6 +21,14 @@ export function saveQuranBookmark(bookmark: QuranBookmark): void {
   }
 }
 
+export function removeQuranBookmark(): void {
+  try {
+    localStorage.removeItem(QURAN_BOOKMARK_KEY);
+  } catch (e) {
+    console.warn('Failed to remove Quran bookmark:', e);
+  }
+}
+
 export function loadFavoriteSurahs(): number[] {
   try {
     const raw = localStorage.getItem(QURAN_FAV_SURAHS_KEY);

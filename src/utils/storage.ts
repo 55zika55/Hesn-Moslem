@@ -41,7 +41,7 @@ export const DEFAULT_SETTINGS: SettingsState = {
     adhanSoundType: 'takbeer_file'
   },
   appearance: {
-    theme: 'light',
+    theme: 'dark',
     fontSizeOffset: 0
   },
   azkarDisplay: {
@@ -72,20 +72,38 @@ export function getTodayKey(): string {
 export function loadSettings(): SettingsState {
   try {
     const raw = localStorage.getItem(SETTINGS_KEY);
-    if (!raw) return DEFAULT_SETTINGS;
+    if (!raw) {
+      localStorage.setItem('hisn_muslim_dark_mode_applied_v1', 'true');
+      return DEFAULT_SETTINGS;
+    }
     const parsed = JSON.parse(raw);
-    return {
+    
+    // Ensure dark mode is active by default as requested
+    const hasAppliedDarkDefault = localStorage.getItem('hisn_muslim_dark_mode_applied_v1');
+    let themeToUse = parsed.appearance?.theme || 'dark';
+    if (!hasAppliedDarkDefault) {
+      themeToUse = 'dark';
+      localStorage.setItem('hisn_muslim_dark_mode_applied_v1', 'true');
+    }
+
+    const loadedSettings: SettingsState = {
       ...DEFAULT_SETTINGS,
       ...parsed,
       location: { ...DEFAULT_SETTINGS.location, ...(parsed.location || {}) },
       minuteAdjustments: { ...DEFAULT_SETTINGS.minuteAdjustments, ...(parsed.minuteAdjustments || {}) },
       notifications: { ...DEFAULT_SETTINGS.notifications, ...(parsed.notifications || {}) },
       sound: { ...DEFAULT_SETTINGS.sound, ...(parsed.sound || {}) },
-      appearance: { ...DEFAULT_SETTINGS.appearance, ...(parsed.appearance || {}) },
+      appearance: {
+        ...DEFAULT_SETTINGS.appearance,
+        ...(parsed.appearance || {}),
+        theme: themeToUse
+      },
       azkarDisplay: { ...DEFAULT_SETTINGS.azkarDisplay, ...(parsed.azkarDisplay || {}) },
       qiblaDisplay: { ...DEFAULT_SETTINGS.qiblaDisplay, ...(parsed.qiblaDisplay || {}) },
       language: parsed.language === 'en' ? 'en' : 'ar'
     };
+    saveSettings(loadedSettings);
+    return loadedSettings;
   } catch (e) {
     console.warn('Failed to load settings from storage:', e);
     return DEFAULT_SETTINGS;

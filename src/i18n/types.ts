@@ -251,6 +251,7 @@ export interface Translations {
   pageLabel: string;
   continueReading: string;
   bookmarkSaved: string;
+  bookmarkRemoved: string;
   setBookmark: string;
   removeBookmark: string;
   backToSurahList: string;
@@ -280,4 +281,29 @@ export interface Translations {
   installOnDeviceTitle: string;
   installOnDeviceDesc: string;
   installGuideTitle: string;
+
+  // Cache Manager & Connection Status
+  onlineStatus: string;
+  offlineStatus: string;
+  onlineDesc: string;
+  cacheManagerTitle: string;
+  cacheManagerDesc: string;
+  offlineReadiness: string;
+  azkarCacheStatus: string;
+  quranSurahsCacheStatus: string;
+  mushafPagesCacheStatus: string;
+  audioCacheStatus: string;
+  downloadAllOfflineData: string;
+  downloadingOfflineData: string;
+  allDataDownloaded: string;
+  clearCacheBtn: string;
+  clearCacheConfirm: string;
+  cacheCleared: string;
+  viewMushafMode: string;
+  viewTextMode: string;
+  mushafPageLabel: string;
+  nextPage: string;
+  prevPage: string;
+  pageCachedOffline: string;
+  cachingPage: string;
 }
