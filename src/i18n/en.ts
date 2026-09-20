@@ -266,5 +266,18 @@ export const en: Translations = {
   meccan: 'Meccan',
   medinan: 'Medinan',
   surahNotFound: 'No Surahs matched your search query',
-  verseCopied: 'Verse text copied'
+  verseCopied: 'Verse text copied',
+
+  // PWA & Offline
+  offlineModeActive: 'Offline mode active',
+  offlineModeDesc: 'All prayer times, Azkar, Quran and audio work 100% offline without internet',
+  appAlreadyInstalled: 'The app is already installed on your device and works offline',
+  installAppTooltip: 'Install application on your device for offline use',
+  installAppBtn: 'Install App',
+  installAppBannerTitle: 'Install app on your device for offline use',
+  installAppBannerDesc: 'Works completely offline with Adhan notifications and quick home screen access',
+  installNowBtn: 'Install Now Free',
+  installOnDeviceTitle: 'Install app on Android & Windows',
+  installOnDeviceDesc: 'You can install this app directly as a standalone program on Windows or as an Android app with full offline support.',
+  installGuideTitle: 'Install app on your device'
 };

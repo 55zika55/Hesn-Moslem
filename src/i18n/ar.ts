@@ -266,5 +266,18 @@ export const ar: Translations = {
   meccan: 'مكية',
   medinan: 'مدنية',
   surahNotFound: 'لم يتم العثور على سور مطابقة للبحث',
-  verseCopied: 'تم نسخ الآية الكريمة'
+  verseCopied: 'تم نسخ الآية الكريمة',
+
+  // PWA & Offline
+  offlineModeActive: 'وضع عدم الاتصال (أوفلاين) مفعّل',
+  offlineModeDesc: 'جميع مواقيت الصلاة والأذكار والقرآن والصوت تعمل بدقة 100% بدون إنترنت',
+  appAlreadyInstalled: 'التطبيق مثبت بالفعل على جهازك ويعمل أوفلاين',
+  installAppTooltip: 'تثبيت التطبيق على جهازك للعمل بدون إنترنت',
+  installAppBtn: 'تثبيت التطبيق',
+  installAppBannerTitle: 'ثبّت التطبيق على جهازك واستخدمه أوفلاين',
+  installAppBannerDesc: 'يعمل بدون إنترنت، مع إشعارات الأذان والوصول السريع من شاشتك الرئيسية',
+  installNowBtn: 'تثبيت الآن مجاناً',
+  installOnDeviceTitle: 'تثبيت التطبيق على أندرويد وويندوز',
+  installOnDeviceDesc: 'يمكنك تثبيت التطبيق مباشرة كبرنامج مستقل على نظام Windows أو كتطبيق على هاتف Android مع دعم كامل للتشغيل بدون إنترنت.',
+  installGuideTitle: 'تثبيت التطبيق على جهازك'
 };

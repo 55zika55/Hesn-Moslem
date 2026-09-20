@@ -267,4 +267,17 @@ export interface Translations {
   medinan: string;
   surahNotFound: string;
   verseCopied: string;
+
+  // PWA & Offline
+  offlineModeActive: string;
+  offlineModeDesc: string;
+  appAlreadyInstalled: string;
+  installAppTooltip: string;
+  installAppBtn: string;
+  installAppBannerTitle: string;
+  installAppBannerDesc: string;
+  installNowBtn: string;
+  installOnDeviceTitle: string;
+  installOnDeviceDesc: string;
+  installGuideTitle: string;
 }
