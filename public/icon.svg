@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="50%" stop-color="#065f46" />
+      <stop offset="100%" stop-color="#022c22" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde047" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#064e3b" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background rounded canvas -->
+  <rect width="512" height="512" rx="108" fill="url(#bgGrad)" />
+  <circle cx="256" cy="256" r="220" fill="url(#glow)" />
+
+  <!-- Subtle Islamic geometric border ring -->
+  <circle cx="256" cy="256" r="210" fill="none" stroke="url(#goldGrad)" stroke-width="4" stroke-opacity="0.4" stroke-dasharray="8 6" />
+
+  <!-- Central Mosque Dome & Minaret Silhouette -->
+  <g transform="translate(0, 20)">
+    <!-- Base Mosque outline -->
+    <path d="M166 360 C166 340 180 320 200 320 L312 320 C332 320 346 340 346 360 L346 370 L166 370 Z" fill="#042f24" opacity="0.9" />
+    
+    <!-- Arch gateway -->
+    <path d="M226 370 L226 310 C226 295 240 280 256 280 C272 280 286 295 286 310 L286 370 Z" fill="url(#goldGrad)" opacity="0.9" />
+
+    <!-- Dome -->
+    <path d="M190 320 C190 230 256 195 256 195 C256 195 322 230 322 320 Z" fill="#053e30" stroke="url(#goldGrad)" stroke-width="3" />
+    
+    <!-- Crescent Moon (Hilal) in Sky -->
+    <path d="M256 100 C305.7 100 346 140.3 346 190 C346 239.7 305.7 280 256 280 C234.6 280 215 272.5 199.5 260 C240.2 260 273.2 227 273.2 186.3 C273.2 148.5 244.6 117.4 207.5 113 C222.4 104.7 238.7 100 256 100 Z" fill="url(#goldGrad)" />
+    
+    <!-- Eight-pointed Star (Rub El Hizb) -->
+    <g transform="translate(310, 130) scale(0.65)">
+      <polygon points="25,0 32,18 50,25 32,32 25,50 18,32 0,25 18,18" fill="url(#goldGrad)" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+{
+  "name": "حصن المسلم | أذكار ومواقيت الصلاة",
+  "description": "تطبيق إسلامي احترافي يضم أذكار الصباح والمساء الموثقة، المصحف الشريف، ومواقيت الصلاة بدقة مع وقت الضحى، واتجاه القبلة، والتنبيهات المخصصة.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
