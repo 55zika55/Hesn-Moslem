@@ -21,15 +21,18 @@ export default defineConfig(() => {
         ],
         manifest: {
           id: '/',
-          name: 'صلاتي وأذكاري - مواقيت الصلاة والقرآن',
-          short_name: 'صلاتي',
-          description: 'تطبيق إسلامي شامل لمواقيت الصلاة، الأذكار، القرآن الكريم، والقبلة، يعمل أوفلاين 100%',
-          theme_color: '#064e3b',
-          background_color: '#064e3b',
+          name: 'حصن المسلم | أذكار ومواقيت الصلاة',
+          short_name: 'حصن المسلم',
+          description: 'تطبيق إسلامي شامل لمواقيت الصلاة، الأذكار، القرآن الكريم، والقبلة، يعمل أوفلاين 100% بدون إنترنت',
+          theme_color: '#0D1512',
+          background_color: '#0D1512',
           display: 'standalone',
           orientation: 'portrait',
           start_url: '/',
           scope: '/',
+          lang: 'ar',
+          dir: 'rtl',
+          categories: ['lifestyle', 'utilities', 'education'],
           icons: [
             {
               src: '/pwa-192x192.png',
@@ -52,8 +55,8 @@ export default defineConfig(() => {
           ]
         },
         workbox: {
-          maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
-          globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2,mp3}'],
+          maximumFileSizeToCacheInBytes: 15 * 1024 * 1024,
+          globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2,mp3,json}'],
           runtimeCaching: [
             {
               urlPattern: ({ url }) => url.pathname.startsWith('/audio/'),
@@ -63,6 +66,48 @@ export default defineConfig(() => {
                 expiration: {
                   maxEntries: 10,
                   maxAgeSeconds: 60 * 60 * 24 * 365
+                },
+                cacheableResponse: {
+                  statuses: [0, 200]
+                }
+              }
+            },
+            {
+              urlPattern: /^https:\/\/api\.alquran\.cloud\/v1\/.*/i,
+              handler: 'CacheFirst',
+              options: {
+                cacheName: 'quran-api-cache',
+                expiration: {
+                  maxEntries: 120,
+                  maxAgeSeconds: 60 * 60 * 24 * 90
+                },
+                cacheableResponse: {
+                  statuses: [0, 200]
+                }
+              }
+            },
+            {
+              urlPattern: /^https:\/\/files\.quran\.app\/hafs\/madani\/.*/i,
+              handler: 'CacheFirst',
+              options: {
+                cacheName: 'mushaf-pages-cache',
+                expiration: {
+                  maxEntries: 604,
+                  maxAgeSeconds: 60 * 60 * 24 * 365
+                },
+                cacheableResponse: {
+                  statuses: [0, 200]
+                }
+              }
+            },
+            {
+              urlPattern: /^https:\/\/server8\.mp3quran\.net\/afs\/.*/i,
+              handler: 'CacheFirst',
+              options: {
+                cacheName: 'quran-recitation-cache',
+                expiration: {
+                  maxEntries: 114,
+                  maxAgeSeconds: 60 * 60 * 24 * 180
                 },
                 cacheableResponse: {
                   statuses: [0, 200]

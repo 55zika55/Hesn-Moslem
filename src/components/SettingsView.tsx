@@ -26,6 +26,7 @@ import {
 import { playAdhanAudio, stopAdhanAudio, isAdhanPlaying, subscribeAdhanState } from '../utils/audioAlert';
 import { saveCustomAdhanAudio, getCustomAdhanAudio, removeCustomAdhanAudio } from '../utils/customAudioStorage';
 import { useTranslation } from '../i18n';
+import { PWAInstallButton } from './PWAInstallButton';
 
 interface SettingsViewProps {
   settings: SettingsState;
@@ -883,6 +884,9 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
             </div>
           </div>
         </div>
+
+        {/* PWA Offline & Install on Devices (Windows & Android) */}
+        <PWAInstallButton variant="settings" />
 
         {/* Data & Backup */}
         <div className="bg-white dark:bg-[#15201A] rounded-3xl p-6 shadow-sm border border-emerald-900/10 dark:border-emerald-500/10 space-y-4">

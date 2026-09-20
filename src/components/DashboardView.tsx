@@ -8,6 +8,7 @@ import { playAdhanAudio, stopAdhanAudio, subscribeAdhanState, playClickSound } f
 import { PRE_PRAYER_TASBEEH } from '../data/azkarData';
 import { loadQuranBookmark } from '../utils/quranStorage';
 import { useTranslation } from '../i18n';
+import { PWAInstallButton } from './PWAInstallButton';
 
 interface DashboardProps {
   prayers: ComputedPrayers;
@@ -69,6 +70,9 @@ export const DashboardView: React.FC<DashboardProps> = ({
 
   return (
     <div id="dashboard-view" className="space-y-6 max-w-5xl mx-auto pb-12">
+      {/* PWA Install Promo Banner (Hidden if already standalone installed) */}
+      <PWAInstallButton variant="banner" />
+
       {/* 1. Large Current Time & Next Prayer Hero Banner */}
       <section
         id="next-prayer-hero"

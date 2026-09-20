@@ -6,6 +6,7 @@ import { playAdhanAudio, stopAdhanAudio, subscribeAdhanState } from '../utils/au
 import { useTranslation } from '../i18n';
 import { useOnlineStatus } from '../utils/usePWAInstall';
 import { CacheManagerModal } from './CacheManagerModal';
+import { PWAInstallButton } from './PWAInstallButton';
 
 interface HeaderProps {
   hijriDate: HijriDateInfo;
@@ -88,6 +89,9 @@ export const Header: React.FC<HeaderProps> = ({
               {isOnline ? t('onlineStatus') : t('offlineStatus')}
             </span>
           </button>
+
+          {/* PWA Install Button */}
+          <PWAInstallButton variant="header" />
 
           {/* Location button */}
           <button

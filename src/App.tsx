@@ -26,6 +26,7 @@ import { AzkarView } from './components/AzkarView';
 import { QuranView } from './components/QuranView';
 import { QiblaView } from './components/QiblaView';
 import { SettingsView } from './components/SettingsView';
+import { OfflineIndicator } from './components/OfflineIndicator';
 
 export default function App() {
   // Splash Screen State
@@ -418,6 +419,9 @@ export default function App() {
             morningPercent={morningPercent}
             eveningPercent={eveningPercent}
           />
+
+          {/* Offline Mode Floating Indicator */}
+          <OfflineIndicator />
         </div>
       </div>
     </TranslationProvider>
